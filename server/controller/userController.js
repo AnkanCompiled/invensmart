@@ -25,7 +25,7 @@ const loginUser = async (req, res, next) => {
         }
         // console.log(loginUserDetails.Role);
         
-        const token = Token.createToken(res,username, loginUserDetails.Role);
+        const token = Token.createToken(username, loginUserDetails.Role);
         if (!token) {
             throw new AppError("Failed to generate token", 500);
         }

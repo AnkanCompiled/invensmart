@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { jwtSecret } from "../config/env";
-import AppError from "../errors/AppError.js";
+import AppError from "../error/AppError.js";
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
@@ -22,6 +22,7 @@ const authorization = (req, res, next) => {
       new AppError("You do not have permission to perform this action", 403)
     );
   }
+  next();
 };
 
 export default { authenticate, authorization };

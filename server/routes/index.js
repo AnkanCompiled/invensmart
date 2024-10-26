@@ -1,15 +1,20 @@
 import express from "express";
 import userRoute from "./userRoute.js";
 import productRoute from "./productRoute.js";
-<<<<<<< HEAD
+
 import transactionsRoute from "./transactionRoute";
+import categoryRoute from "./categoryRouter.js"
+import supplierRoute from "./supplier.js"
 
-=======
-import transactionsRoute from "./transactionRoute.js";
-import categoryRoute from "./categoryRouter.js";
->>>>>>> 15e7462e6f93f8b5ecf872812502f92276b432c1
 
-const Router = express.Router();
+const indexRoute = express.Router();
+
+
+indexRoute.use("/", userRoute);
+indexRoute.use("/products",productRoute);
+indexRoute.use("/transactions", transactionsRoute);
+indexRoute.use("/categories", categoryRoute);
+indexRoute.use("/supplier",supplierRoute);
 
 Router.use("/", userRoute);
 Router.use("/products", productRoute);

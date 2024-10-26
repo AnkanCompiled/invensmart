@@ -3,12 +3,14 @@ import userRoute from "./userRoute";
 import productRoute from "./productRoute.js";
 import transactionsRoute from "./transactionRoute";
 import categoryRoute from "./categoryRouter.js"
+import supplierRoute from "./supplier.js"
 
-const Router = express.Router();
+const indexRoute = express.Router();
 
-Router.use("/", userRoute);
-Router.use("/products",productRoute);
-Router.use("/transactions", transactionsRoute);
-Router.use("/categories", categoryRoute);
+indexRoute.use("/", userRoute);
+indexRoute.use("/products",productRoute);
+indexRoute.use("/transactions", transactionsRoute);
+indexRoute.use("/categories", categoryRoute);
+indexRoute.use("/supplier",supplierRoute);
 
 export default Router;

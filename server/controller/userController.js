@@ -1,10 +1,11 @@
 import AppError from "../error/AppError.js";
-import UserService from "../services/UserService.js";
+import userService from "../service/userService.js";
+import Token from "../middleware/token.js";
 
-export const addUser = async (req, res, next) => {
+const addUser = async (req, res, next) => {
     const { username, password, role, email, fullName } = req.body;
     try {
-        const userId = await UserService.addUserService(username, password, role, email, fullName);
+        const userId = await userService.addUserService(username, password, role, email, fullName);
         res.status(201).json({ message: 'User added successfully.', userId });
     } catch (error) {
         // console.error(error);
@@ -12,19 +13,19 @@ export const addUser = async (req, res, next) => {
     }
 }
 
-export const loginUser = async (req, res, next) => {
+const loginUser = async (req, res, next) => {
     const { username, password } = req.body;
     try {
         if (!username || !password ) {
             throw new AppError("Username and Password are Required",404);
         }
-        const loginUserDetails = await UserService.loginUserService(username, password);
+        const loginUserDetails = await userService.loginUserService(username, password);
         if (!loginUserDetails) {
             throw new AppError("Invalid username or password", 401);
         }
         // console.log(loginUserDetails.Role);
         
-        const token = createToken(res,username, loginUserDetails.Role);
+        const token = Token.createToken(res,username, loginUserDetails.Role);
         if (!token) {
             throw new AppError("Failed to generate token", 500);
         }
@@ -35,3 +36,8 @@ export const loginUser = async (req, res, next) => {
         throw new AppError("Failed to login user", 500);
     }
 }
+
+export default {
+    addUser,
+    loginUser,
+};

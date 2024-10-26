@@ -7,13 +7,12 @@ const addUserService = async ( username, password, role, email, fullName) => {
         if (!insertId) {
             throw new Error("Failed to add user");
         }
-        return insertId;  
+        return insertId;
     } catch (error) {
         if(error.message === "Failed to add user"){
             throw new AppError(error.message,500);
         }
         throw new AppError(error.message,404);
-        
     }
 }
 const loginUserService = async (username, password) => {

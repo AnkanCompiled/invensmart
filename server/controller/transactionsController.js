@@ -1,4 +1,4 @@
-import transactionsServices from "../service/transactionsServices.js";
+import transactionsServices from "../services/transactionsServices.js";
 
 async function getTransaction(req, res, next) {
   try {

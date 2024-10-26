@@ -33,7 +33,6 @@ const loginUser = async (req, res, next) => {
     } catch (error) {
         console.error(error);
         next(error);
-        throw new AppError("Failed to login user", 500);
     }
 }
 

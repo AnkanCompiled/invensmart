@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { jwtSecret } from "../config/env";
-import AppError from "../errors/AppError";
+import AppError from "../errors/AppError.js";
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];

@@ -1,4 +1,4 @@
-import db from "../connection/db";
+import db from "../connection/db.js";
 
 const getTransaction = async () => {
   try {

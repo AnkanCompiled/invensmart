@@ -16,9 +16,5 @@ indexRoute.use("/transactions", transactionsRoute);
 indexRoute.use("/categories", categoryRoute);
 indexRoute.use("/supplier",supplierRoute);
 
-Router.use("/", userRoute);
-Router.use("/products", productRoute);
-Router.use("/transactions", transactionsRoute);
 
-
-export default Router;
+export default indexRoute;

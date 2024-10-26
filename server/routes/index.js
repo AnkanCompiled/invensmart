@@ -7,6 +7,7 @@ import transactionsRoute from "./transactionRoute";
 
 const Router = express.Router();
 
+
 Router.use("/", userRoute);
 Router.use("/products", productRoute);
 Router.use("/transactions", transactionsRoute);

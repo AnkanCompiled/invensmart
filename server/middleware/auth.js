@@ -1,13 +1,17 @@
 import jwt from "jsonwebtoken";
-import { jwtSecret } from "../config/env";
+
 import AppError from "../error/AppError.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) {
     return next(new AppError("Please login to access this route", 401));
   }
-  jwt.verify(token, jwtSecret, (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return next(new AppError("Invalid token", 401));
     }

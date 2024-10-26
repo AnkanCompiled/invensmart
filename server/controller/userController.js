@@ -3,15 +3,21 @@ import userService from "../service/userService.js";
 import Token from "../middleware/token.js";
 
 const addUser = async (req, res, next) => {
-    const { username, password, role, email, fullName } = req.body;
-    try {
-        const userId = await userService.addUserService(username, password, role, email, fullName);
-        res.status(201).json({ message: 'User added successfully.', userId });
-    } catch (error) {
-        // console.error(error);
-        next(error);
-    }
-}
+  const { username, password, role, email, fullName } = req.body;
+  try {
+    const userId = await userService.addUserService(
+      username,
+      password,
+      role,
+      email,
+      fullName
+    );
+    res.status(201).json({ message: "User added successfully.", userId });
+  } catch (error) {
+    // console.error(error);
+    next(error);
+  }
+};
 
 const loginUser = async (req, res, next) => {
     const { username, password } = req.body;
@@ -34,9 +40,9 @@ const loginUser = async (req, res, next) => {
         console.error(error);
         next(error);
     }
-}
+};
 
 export default {
-    addUser,
-    loginUser,
+  addUser,
+  loginUser,
 };

@@ -14,6 +14,6 @@ app.use("/api", routes);
 
 app.use(errorHandler);
 
-app.listen(Port, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${Port}`);
 });

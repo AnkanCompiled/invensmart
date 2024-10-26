@@ -1,5 +1,5 @@
 import AppError from "../error/AppError.js";
-import userRepo from "../repository/userRepo.js";
+import userRepo from "../db/userRepo.js";
 
 const addUserService = async ( username, password, role, email, fullName) => {
     try {

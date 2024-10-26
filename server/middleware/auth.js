@@ -1,8 +1,10 @@
 import jwt from "jsonwebtoken";
+
 import AppError from "../error/AppError.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+
 
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
@@ -24,6 +26,7 @@ const authorization = (req, res, next) => {
       new AppError("You do not have permission to perform this action", 403)
     );
   }
+  next();
 };
 
 export default { authenticate, authorization };
